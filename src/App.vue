@@ -1,7 +1,8 @@
 <template>
   <div id='root'>
      <div id='nav'>
-        <router-link to='/FilterSearch'>FilterSearch </router-link>
+        <router-link to='/filterSearch'>FilterSearch </router-link>
+        <router-link to='/home'>Home </router-link>
     </div>
     <router-view />
   </div>

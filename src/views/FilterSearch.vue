@@ -15,7 +15,7 @@
 
 <script >
 import { ref } from 'vue'
-import SearchResults from './SearchResults.vue'
+import SearchResults from '../components/SearchResults.vue'
 
 export default {
   components:{
