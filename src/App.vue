@@ -1,15 +1,5 @@
 <template>
   <div id='root'>
-  <h1>Nested Views</h1>
-  <p>
-    <router-link to="/users/eduardo">/users/eduardo</router-link>
-    <br />
-    <router-link to="/users/eduardo/profile"
-      >/users/eduardo/profile</router-link
-    >
-    <br />
-    <router-link to="/users/eduardo/posts">/users/eduardo/posts</router-link>
-  </p>
   <router-view></router-view>
   </div>
 </template>

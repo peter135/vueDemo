@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import User from '../views/user/User.vue'
-import UserHome from '../views/user/UserHome.vue'
-import UserProfile from '../views/user/UserProfile.vue'
-import UserPosts from '../views/user/UserPosts.vue'
-
+import Home from '../views/home/home.vue'
+import PageNotFound from '../views/notFound/PageNotFound.vue'
+import About from '../views/about/about.vue'
+import AirportDetail from '../views/airportDetail/airportDetail.vue'
+import AirportDestinations from '../views/airportDestinations/airportDestinations.vue'
 
 const routerHistory = createWebHistory()
 
@@ -11,22 +11,33 @@ const router = createRouter({
   history: routerHistory,
   routes: [
     {
-      path: '/users/:username',
-      component: User,
-      children: [
-        // UserHome will be rendered inside User's <router-view>
-        // when /users/:username is matched
-        { path: '', component: UserHome },
-
-        // UserProfile will be rendered inside User's <router-view>
-        // when /users/:username/profile is matched
-        { path: 'profile', component: UserProfile },
-
-        // UserPosts will be rendered inside User's <router-view>
-        // when /users/:username/posts is matched
-        { path: 'posts', component: UserPosts },
-      ],
+      path: '/',
+      name:'Home',
+      component: Home
     },
+    {
+      path: '/:catchAll(.*)*',
+      name:'PageNotFound',
+      component: PageNotFound
+    },
+    {
+      path: '/airport/:code',
+      name: "AirportDetail",
+      component: AirportDetail,
+      children: [
+        {
+          path: 'destinations',
+          name: 'AirportDestinations',
+          component: AirportDestinations
+        }
+      ]
+    },
+    {
+      path: '/about',
+      name:'About',
+      component: About
+    },
+
   ]
 })
 

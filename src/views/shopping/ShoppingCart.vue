@@ -17,8 +17,8 @@
 
 <script>
 
-import CartItem from "../components/CartItem.vue";
-import Cart from "../components/Cart.vue";
+import CartItem from "../../components/CartItem.vue";
+import Cart from "../../components/Cart.vue";
 import { computed } from "vue";
 import {useStore} from "vuex";
 

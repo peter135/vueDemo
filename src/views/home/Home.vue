@@ -1,53 +1,54 @@
 <template>
-  <div class="home container">
-    <div class="row">
-      <div class="col-md-9 pt-5">
-
-       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3">
-          <Product v-for="product in products" :product="product" :key="product.id" />
-       </div>
-        
-      </div>
-      <div class="col-md-3 pt-5">
-        <!-- <SideNav /> -->
-        <Cart />
-      </div>
-      
-    </div>
+  <div class="wrapper">
+    <!-- <router-link :to="{ path: `/airport/${airport.abbreviation}` }" v-for="airport in airports" :key="airport.abbreviation" class="airport"> -->
+		<router-link :to="{ name: 'AirportDetail', params: { code: airport.abbreviation } }" v-for="airport in airports" :key="airport.abbreviation" class="airport">
+      <p>{{ airport.abbreviation }}</p>
+			<p>{{ airport.name }}</p>
+			<p>{{ airport.city }}, {{ airport.state }}</p>
+		</router-link>
   </div>
 </template>
 
 <script>
-
-import Product from "../components/Product.vue";
-import Cart from "../components/Cart.vue";
-
-import { computed } from "vue";
-import { useStore } from "vuex";
+import { ref } from 'vue'
+import allAirports from '../../data/airport'
 
 export default {
-  name: 'Home',
-  components: {
-    Product,
-    Cart
-  },
-  setup(){
-
-    const store = useStore();
-
-    let products = computed(()=>{
-      return store.state.products
-    })
-
-    let cart = computed(()=>{
-      return store.state.cart
-    })
-
-    return {
-      products,
-      cart
-    }
-  },
-  
+  setup() {
+    const airports = ref(allAirports)
+		return { airports }
+	}
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.airport {
+  border: 3px solid;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+.airport p:first-child {
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+.airport p:last-child {
+  font-style: italic;
+  font-size: .8rem;
+}
+</style>
