@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Vue 学习路线
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+1. vue route 页面跳转，动态路由
+2. vue store 数据增删查改，数据页面分离
+3. vue axios 网络接口封装 
