@@ -4,12 +4,18 @@ import PageNotFound from '../views/notFound/PageNotFound.vue'
 import About from '../views/about/about.vue'
 import AirportDetail from '../views/airportDetail/airportDetail.vue'
 import AirportDestinations from '../views/airportDestinations/airportDestinations.vue'
+import Login from '../views/login/index.vue'
 
 const routerHistory = createWebHistory()
 
 const router = createRouter({
   history: routerHistory,
   routes: [
+    { name: "login", 
+      path: "/login", 
+      meta: { title: "login" }, 
+      component: Login, 
+    },
     {
       path: '/',
       name:'Home',
