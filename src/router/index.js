@@ -12,12 +12,12 @@ const router = createRouter({
   history: routerHistory,
   routes: [
     { name: "login", 
-      path: "/login", 
+      path: "/", 
       meta: { title: "login" }, 
       component: Login, 
     },
     {
-      path: '/',
+      path: '/home',
       name:'Home',
       component: Home
     },

@@ -12,11 +12,13 @@
 				<el-form-item>
 					<el-button type="primary" class="btn-login" @click="login">登录</el-button>
 				</el-form-item>
-				<div class="toast">
+				<!-- <div class="toast"> -->
+				<div>
 					<span>管理员账号：admin </span>
 					<span>密码：654321</span>
 				</div>
-				<div class="toast">
+				<!-- <div class="toast"> -->
+				<div>
 					<span>普通人员账号：people</span>
 					<span>密码：123456</span>
 				</div>
@@ -32,21 +34,21 @@ export default {
 	setup() {
 
 		const login = () =>{
-			// this.$refs.userForm.validate(( valid ) => {
-			//     if(valid) {
-			// 		let flag = !1
-			// 		window.localStorage.removeItem("userInfo")
-			// 		dynamicUser.forEach(item => {
-			// 			if(item["username"] == this.user['username'] && item["password"] == this.user['password']) {
-			// 				flag = !0
-			// 				// ElMessage({ type: 'success', message: "登录成功", showClose: true, duration: 3000 })
-			// 				window.localStorage.setItem("userInfo", JSON.stringify(item))
-			// 				this.$router.replace({ path: "/" })
-			// 			}
-			// 		})
-			// 		// if(!flag) ElMessage({ type: 'warning', message: "账号密码错误，请重试!", showClose: true, duration: 3000 })
-			//     } else return false
-			// })
+			this.$refs.userForm.validate(( valid ) => {
+			    if(valid) {
+					let flag = !1
+					window.localStorage.removeItem("userInfo")
+					dynamicUser.forEach(item => {
+						if(item["username"] == this.user['username'] && item["password"] == this.user['password']) {
+							flag = !0
+							// ElMessage({ type: 'success', message: "登录成功", showClose: true, duration: 3000 })
+							window.localStorage.setItem("userInfo", JSON.stringify(item))
+							this.$router.replace({ path: "/" })
+						}
+					})
+					// if(!flag) ElMessage({ type: 'warning', message: "账号密码错误，请重试!", showClose: true, duration: 3000 })
+			    } else return false
+			})
 		}
 
 		return {
