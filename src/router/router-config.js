@@ -6,6 +6,10 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const filterRoutes = ["/login"]   // 需要过滤掉的路由
 router.beforeEach((to, from, next) => {
+
+    console.log('to',to)
+    console.log('from',from)
+
     // start progress bar
     NProgress.start()
 
@@ -34,7 +38,7 @@ router.afterEach(() => {
 
 // 路由拼接
 function loadView(view) {
-    return () => import(`@/views/${ view }`)
+    return () => import(`../views/${ view }.vue`)
 }
 
 // 路由过滤和跳转

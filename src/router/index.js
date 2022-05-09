@@ -12,37 +12,37 @@ const router = createRouter({
   history: routerHistory,
   routes: [
     { name: "login", 
-      path: "/", 
+      path: "/login", 
       meta: { title: "login" }, 
       component: Login, 
     },
-    {
-      path: '/home',
-      name:'Home',
-      component: Home
-    },
-    {
-      path: '/:catchAll(.*)*',
-      name:'PageNotFound',
-      component: PageNotFound
-    },
-    {
-      path: '/airport/:code',
-      name: "AirportDetail",
-      component: AirportDetail,
-      children: [
-        {
-          path: 'destinations',
-          name: 'AirportDestinations',
-          component: AirportDestinations
-        }
-      ]
-    },
-    {
-      path: '/about',
-      name:'About',
-      component: About
-    },
+    // {
+    //   path: '/home',
+    //   name:'Home',
+    //   component: Home
+    // },
+    // {
+    //   path: '/:catchAll(.*)*',
+    //   name:'PageNotFound',
+    //   component: PageNotFound
+    // },
+    // {
+    //   path: '/airport/:code',
+    //   name: "AirportDetail",
+    //   component: AirportDetail,
+    //   children: [
+    //     {
+    //       path: 'destinations',
+    //       name: 'AirportDestinations',
+    //       component: AirportDestinations
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/about',
+    //   name:'About',
+    //   component: About
+    // },
 
   ]
 })
