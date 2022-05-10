@@ -6,10 +6,27 @@ const state = {
         user_id:1,
         user_name:"张三",
         permission_list:["List","Detail","Manage"]
-     }
+     },
+     addedRoutes:false
 }
+
+const actions = {
+    addedRoutesFlagAction({ commit, state }, flag) {
+        commit('setAddedRoutesFlag', flag)
+    }
+
+}
+
+const mutations = {
+    setAddedRoutesFlag (state, flag) {
+      state.addedRoutes = flag
+    }
+}
+
 
 export default {
     namespaced: true,
-    state
+    state,
+    mutations,
+    actions
 }

@@ -1,11 +1,12 @@
 <template>
   <div class="wrapper">
+    home
     <!-- <router-link :to="{ path: `/airport/${airport.abbreviation}` }" v-for="airport in airports" :key="airport.abbreviation" class="airport"> -->
-		<router-link :to="{ name: 'AirportDetail', params: { code: airport.abbreviation } }" v-for="airport in airports" :key="airport.abbreviation" class="airport">
+		<!-- <router-link :to="{ name: 'AirportDetail', params: { code: airport.abbreviation } }" v-for="airport in airports" :key="airport.abbreviation" class="airport">
       <p>{{ airport.abbreviation }}</p>
 			<p>{{ airport.name }}</p>
 			<p>{{ airport.city }}, {{ airport.state }}</p>
-		</router-link>
+		</router-link> -->
   </div>
 </template>
 

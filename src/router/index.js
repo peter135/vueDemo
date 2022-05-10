@@ -12,12 +12,12 @@ const routerHistory = createWebHistory()
 //静态路由
 export const routes = [
     { name: "login", 
-      path: "/login", 
+      path: "/", 
       meta: { title: "login" }, 
       component: Login, 
     },
     {
-      path: '/',
+      path: '/home',
       name:'Home',
       component: Home
     },
@@ -41,11 +41,11 @@ export const routes = [
       name:'About',
       component: About
     },
-    {
-      path: '/:catchAll(.*)*',
-      name:'PageNotFound',
-      component: PageNotFound
-    }
+    // {
+    //   path: '/:catchAll(.*)*',
+    //   name:'PageNotFound',
+    //   component: PageNotFound
+    // }
 ]
     
 //动态路由
@@ -53,22 +53,22 @@ export const dynamic_routes = [
    {
        path:"/list", // 列表页
        name:"List",
-       component: Home
+       component: About
    },
    {
        path:"/detail", // 详情页
        name:"Detail",
-       component: Home
+       component: About
    },
    {
        path:"/manage", // 内容管理页
        name:"Manage",
-       component: Home
+       component: About
    },
    {
        path:"/admin", // 人员管理页
        name:"Admin",
-       component: Home
+       component: About
    }
 ]  
 
@@ -87,37 +87,45 @@ const router = createRouter({
 
 router.beforeEach((to,from,next) => {
 
+  // console.log('flag',store.state.userinfo.addedRoutes)
+  // console.log('route to ',to)
+  // console.log('route from ',from)
+  // console.log('routes',router.getRoutes())
+
   // 【用户角色权限控制 | 动态添加路由】
-  // const store = useStore();
-  if(store.state.userinfo.user != null){ //从vuex中拿到用户信息
+  if(store.state.userinfo.user && !store.state.userinfo.addedRoutes){ //从vuex中拿到用户信息
     //用户已经登录
     const { permission_list } = store.state.userinfo.user; // 从用户信息中获取权限列表
     const allow_routes = dynamic_routes.filter((route)=>{ //过滤允许访问的路由
       return permission_list.includes(route.name); 
     })
-    console.log('store',allow_routes)
 
     allow_routes.forEach((route)=>{ // 将允许访问的路由动态添加到路由栈中
       router.addRoute(route);
     })
+    store.dispatch('userinfo/addedRoutesFlagAction', true)
+    next({ ...to, replace: true }) 
+
+  } else {
+    next()
   }
 
   // 【登录 | 非登录判断】
-  const {need_login = false} = to.meta
-  if(need_login) {
-      // 如果页面需要登录但用户没有登录跳到登录页面
-    const next_page = to.name; // 配置路由时,每一条路由都要给name赋值
-    next({
-      name: 'login',
-      params: {
-        redirect_page: next_page,
-        ...from.params, //如果跳转需要携带参数就把参数也传递过去
-      },
-    });
+  // const {need_login = false} = to.meta
+  // if(need_login) {
+  //     // 如果页面需要登录但用户没有登录跳到登录页面
+  //   const next_page = to.name; // 配置路由时,每一条路由都要给name赋值
+  //   next({
+  //     name: 'login',
+  //     params: {
+  //       redirect_page: next_page,
+  //       ...from.params, //如果跳转需要携带参数就把参数也传递过去
+  //     },
+  //   });
 
-  }else{
-    next()
-  }
+  // }else{
+  //   next()
+  // }
 
 })
 
