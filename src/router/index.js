@@ -11,41 +11,48 @@ const routerHistory = createWebHistory()
 
 //静态路由
 export const routes = [
-    { name: "login", 
-      path: "/", 
-      meta: { title: "login" }, 
-      component: Login, 
-    },
+    // { name: "login", 
+    //   path: "/", 
+    //   meta: { title: "login" }, 
+    //   component: Login     
+    // },
+    // {
+    //   path: '/airport/:code',
+    //   name: "AirportDetail",
+    //   component: AirportDetail,
+    //   meta:{
+    //     need_login:true //需要登录
+    //   },
+    //   children: [
+    //     {
+    //       path: 'destinations',
+    //       name: 'AirportDestinations',
+    //       component: AirportDestinations
+    //     }
+    //   ]
+    // },
     {
       path: '/home',
       name:'Home',
-      component: Home
-    },
-    {
-      path: '/airport/:code',
-      name: "AirportDetail",
-      component: AirportDetail,
-      meta:{
-        need_login:true //需要登录
-      },
-      children: [
-        {
-          path: 'destinations',
-          name: 'AirportDestinations',
-          component: AirportDestinations
-        }
-      ]
+      component: Home,
     },
     {
       path: '/about',
       name:'About',
       component: About
     },
-    // {
-    //   path: '/:catchAll(.*)*',
-    //   name:'PageNotFound',
-    //   component: PageNotFound
-    // }
+    {
+      path: '/pageNotFound',
+      name:'PageNotFound',
+      component: PageNotFound,
+      children: [
+         {
+           path: '/:pathMatch(.*)*',    // 捕获所有路由或 404 Not found 路由
+           component: PageNotFound
+         }
+      ]
+    },
+
 ]
     
 //动态路由
@@ -90,7 +97,7 @@ router.beforeEach((to,from,next) => {
   // console.log('flag',store.state.userinfo.addedRoutes)
   // console.log('route to ',to)
   // console.log('route from ',from)
-  // console.log('routes',router.getRoutes())
+  console.log('routes',router.getRoutes())
 
   // 【用户角色权限控制 | 动态添加路由】
   if(store.state.userinfo.user && !store.state.userinfo.addedRoutes){ //从vuex中拿到用户信息
@@ -103,7 +110,8 @@ router.beforeEach((to,from,next) => {
     allow_routes.forEach((route)=>{ // 将允许访问的路由动态添加到路由栈中
       router.addRoute(route);
     })
-    store.dispatch('userinfo/addedRoutesFlagAction', true)
+    // store.commit('setAddedRoutesFlag',true) mutation同步操作
+    store.dispatch('userinfo/addedRoutesFlagAction', true) // action异步操作
     next({ ...to, replace: true }) 
 
   } else {
