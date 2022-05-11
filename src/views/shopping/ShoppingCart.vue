@@ -29,6 +29,7 @@ export default {
     Cart
   },
   setup(){
+    console.log('setup ShoppingCart')
     const store = useStore();
 
     let cart = computed(function () {

@@ -32,7 +32,7 @@ export default {
         const store = useStore();
 
         let cart = computed(function () {
-            return store.state.cart
+            return store.state.shopping.cart
         });
 
         let totalPrice = computed(function(){

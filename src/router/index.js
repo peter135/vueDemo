@@ -6,6 +6,8 @@ import AirportDetail from '../views/airportDetail/airportDetail.vue'
 import AirportDestinations from '../views/airportDestinations/airportDestinations.vue'
 import Login from '../views/login/index.vue'
 import store from "../store/index";
+import List from '../views/list/index.vue'
+import ShoppingHome from '../views/shopping/ShoppingHome.vue'
 
 const routerHistory = createWebHistory()
 
@@ -37,6 +39,11 @@ export const routes = [
       component: Home,
     },
     {
+      path: '/shoppinghome',
+      name:'shoppinghome',
+      component: ShoppingHome,
+    },
+    {
       path: '/about',
       name:'About',
       component: About
@@ -60,7 +67,7 @@ export const dynamic_routes = [
    {
        path:"/list", // 列表页
        name:"List",
-       component: About
+       component: List
    },
    {
        path:"/detail", // 详情页

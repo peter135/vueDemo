@@ -26,7 +26,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  name: 'Home',
+  name: 'ShoopingHome',
   components: {
     Product,
     Cart
@@ -36,11 +36,11 @@ export default {
     const store = useStore();
 
     let products = computed(()=>{
-      return store.state.products
+      return store.state.shopping.products
     })
 
     let cart = computed(()=>{
-      return store.state.cart
+      return store.state.shopping.cart
     })
 
     return {

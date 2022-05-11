@@ -29,7 +29,7 @@ export default {
     setup(props){
         const store = useStore();
         let cart = computed(()=>{
-            return store.state.cart
+            return store.state.shopping.cart
         })
 
         let itemAlreadyInCart = computed(()=>{

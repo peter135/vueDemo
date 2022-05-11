@@ -1,14 +1,27 @@
+<template>
+  <!-- <div> -->
+    <menu  :menuList="menuListData"/>
+  <!-- </div> -->
+</template>
 
-// initial state
-// shape: [{ id, quantity }]
-const state = {
-    user: {
-        user_id:1,
-        user_name:"张三",
-        permission_list:["List","Detail","Manage"]
-     },
-     addedRoutes:false,
-     menuListData:[{
+<script>
+
+import menu from "./menu/menu.vue";
+import { computed } from "vue";
+import {useStore} from "vuex";
+
+export default {
+  name: 'ShoppingCart',
+  components: {
+    menu,
+  },
+  setup(){
+    const store = useStore();
+    // let menuListData = computed(function () {
+    //     return store.state.userinfo.menuListData
+    // });
+
+    const menuListData = [{
             type: "group",
             name: "通用",
             id: "1",
@@ -54,25 +67,11 @@ const state = {
                 }
             ]
         }]
-}
 
-const actions = {
-    addedRoutesFlagAction({ commit, state }, flag) {
-        commit('setAddedRoutesFlag', flag)
+    console.log('menuListData',menuListData)
+    return {
+        menuListData
     }
-
+  }
 }
-
-const mutations = {
-    setAddedRoutesFlag (state, flag) {
-      state.addedRoutes = flag
-    }
-}
-
-
-export default {
-    namespaced: true,
-    state,
-    mutations,
-    actions
-}
+</script>
