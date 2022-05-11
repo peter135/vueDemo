@@ -13,40 +13,20 @@ const routerHistory = createWebHistory()
 
 //静态路由
 export const routes = [
-    // { name: "login", 
-    //   path: "/", 
-    //   meta: { title: "login" }, 
-    //   component: Login     
-    // },
-    // {
-    //   path: '/airport/:code',
-    //   name: "AirportDetail",
-    //   component: AirportDetail,
-    //   meta:{
-    //     need_login:true //需要登录
-    //   },
-    //   children: [
-    //     {
-    //       path: 'destinations',
-    //       name: 'AirportDestinations',
-    //       component: AirportDestinations
-    //     }
-    //   ]
-    // },
     {
-      path: '/home',
+      path: '/',
       name:'Home',
       component: Home,
+    },
+    {
+      path: '/about',
+      name:'About',
+      component: About
     },
     {
       path: '/shoppinghome',
       name:'shoppinghome',
       component: ShoppingHome,
-    },
-    {
-      path: '/about/:slug',
-      name:'About',
-      component: About
     },
     {
       path: '/pageNotFound',

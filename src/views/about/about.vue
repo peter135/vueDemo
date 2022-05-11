@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <main class="about-page">
     <h1>About</h1>
-    <p>This is an about page used to illustrate mapping a view to a router with Vue Router.</p>
-    <h3>{{$route.params.slug}}</h3>
-  </div>
+    <p>This is the about page</p>
+  </main>
 </template>
