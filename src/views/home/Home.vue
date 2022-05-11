@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    home
+   <h3> home </h3>
     <!-- <router-link :to="{ path: `/airport/${airport.abbreviation}` }" v-for="airport in airports" :key="airport.abbreviation" class="airport"> -->
 		<!-- <router-link :to="{ name: 'AirportDetail', params: { code: airport.abbreviation } }" v-for="airport in airports" :key="airport.abbreviation" class="airport">
       <p>{{ airport.abbreviation }}</p>
@@ -11,32 +11,30 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref,reactive } from 'vue'
 import allAirports from '../../data/airport'
-import { useStore } from "vuex";
-import { dynamic_routes } from "../../router/index";
-import router from "../../router/index";
 
 export default {
+  name:'Home',
   setup() {
 
-    // // 【用户角色权限控制 | 动态添加路由】
-    // const store = useStore();
-    // if(store.state.userinfo.user != null){ //从vuex中拿到用户信息
-    //   //用户已经登录
-    //   const { permission_list } = store.state.userinfo.user; // 从用户信息中获取权限列表
-    //   const allow_routes = dynamic_routes.filter((route)=>{ //过滤允许访问的路由
-    //     return permission_list.includes(route.name); 
-    //   })
-    //   console.log('store',allow_routes)
+    // const airports = ref(allAirports)
+		// return { airports }
 
-    //   allow_routes.forEach((route)=>{ // 将允许访问的路由动态添加到路由栈中
-    //     router.addRoute(route);
-    //   })
-    // }
+    const state = reactive({
+        pokemons:[],
+        urlIdLookup:{}
+    })
 
-    const airports = ref(allAirports)
-		return { airports }
+    fetch("https://pokeapi.co/api/v2/pokemon?offset=0")
+        .then((res)=>res.json())
+        .then((data)=>{
+          console.log(data)
+          state.pokemons = data.results
+          // state.urlIdLookup = data.results.reduce((acc,cur,idx) => {
+          // },{})
+        })
+
 	}
 }
 </script>

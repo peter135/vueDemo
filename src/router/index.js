@@ -44,7 +44,7 @@ export const routes = [
       component: ShoppingHome,
     },
     {
-      path: '/about',
+      path: '/about/:slug',
       name:'About',
       component: About
     },
