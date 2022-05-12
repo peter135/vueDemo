@@ -12,22 +12,46 @@
        </div>
        <h3>Menu</h3>
        <div class="menu">
-           <router-link class="button" to="/home">
+
+           <button class="button" @click="ToggleHome">
                <span class="material-icons">home</span>
                <span class="text">home</span>
-           </router-link>
-           <router-link class="button" to="/about">
+           </button>
+
+           <div class="menu_t" v-if="home_expanded && is_expanded">
+           
+              <button class="button button_t">
+                  <span class="material-icons">home</span>
+                  <span class="text">home1</span>
+              </button>
+
+               <button class="button button_t">
+                  <span class="material-icons">home</span>
+                  <span class="text">home2</span>
+              </button>
+
+               <button class="button button_t">
+                  <span class="material-icons">home</span>
+                  <span class="text">home3</span>
+              </button>
+
+           </div>
+
+           <button class="button" @click="ToggleAbout">
                <span class="material-icons">visibility</span>
                <span class="text">About</span>
-           </router-link>
-           <router-link class="button" to="/team">
+           </button>
+
+           <button class="button" @click="ToggleTeam">
                <span class="material-icons">group</span>
                <span class="text">Team</span>
-           </router-link>
-            <router-link class="button" to="/contact">
+           </button>
+
+           <button class="button" @click="ToggleContact">
                <span class="material-icons">email</span>
                <span class="text">Contact</span>
-           </router-link>
+           </button>
+
        </div>
 
        <div class="flex"></div>
@@ -45,10 +69,16 @@
 import{ref} from 'vue'
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
+const home_expanded = ref(localStorage.getItem("home_expanded") === "true")
 
 const ToggleMenu = ()=> {
     is_expanded.value = !is_expanded.value
     localStorage.setItem("is_expanded",is_expanded.value)
+}
+
+const ToggleHome = ()=> {
+    home_expanded.value = !home_expanded.value
+    localStorage.setItem("home_expanded",home_expanded.value)
 }
 
 </script>
@@ -139,7 +169,7 @@ aside {
                 transition: 0.2s ease-out;
             }
 
-            &:hover, &.router-link-exact-active {
+            &:hover {
                 background-color: var(--dark-alt);
                 .material-icons, .text{
                      color: var(--primary);
@@ -147,11 +177,20 @@ aside {
 
             }
 
-            &.router-link-exact-active {
-                border-right: 5px solid var(--primary);
+            // &.router-link-exact-active {
+            //     border-right: 5px solid var(--primary);
+            // }
+        }
+
+        .menu_t {
+            
+            .button_t {
+                    padding: 0.5rem 2rem;
             }
         }
     }
+
+
 
     &.is-expanded {
         width: var(--slidebar-width);
@@ -168,6 +207,7 @@ aside {
         }
 
         .button {
+            width: var(--slidebar-width);
             .material-icons {
                 margin-right: 1rem;
             }
