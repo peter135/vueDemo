@@ -2,12 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/home/home.vue'
 import PageNotFound from '../views/notFound/PageNotFound.vue'
 import About from '../views/about/about.vue'
-import AirportDetail from '../views/airportDetail/airportDetail.vue'
-import AirportDestinations from '../views/airportDestinations/airportDestinations.vue'
 import Login from '../views/login/index.vue'
 import store from "../store/index";
 import List from '../views/list/index.vue'
-import ShoppingHome from '../views/shopping/ShoppingHome.vue'
+import Entry from '../Entry.vue'
+import Team from '../views/team/team.vue'
+import Contact from '../views/contact/contact.vue'
+import Settings from '../views/settings/settings.vue'
 
 const routerHistory = createWebHistory()
 
@@ -15,18 +16,40 @@ const routerHistory = createWebHistory()
 export const routes = [
     {
       path: '/',
-      name:'Home',
-      component: Home,
+      name:'Entry',
+      component: Entry,
+      children: [
+        {
+          path: '/about',
+          name:'About',
+          component: About
+        },
+        {
+          path: '/home',
+          name:'Home',
+          component: Home
+        },
+        {
+          path: '/team',
+          name:'Team',
+          component: Team
+        },
+        {
+          path: '/contact',
+          name:'Contact',
+          component: Contact
+        },
+        {
+          path: '/settings',
+          name:'Settings',
+          component: Settings
+        },
+     ]
     },
     {
-      path: '/about',
-      name:'About',
-      component: About
-    },
-    {
-      path: '/shoppinghome',
-      name:'shoppinghome',
-      component: ShoppingHome,
+      path: '/login',
+      name:'Login',
+      component: Login,
     },
     {
       path: '/pageNotFound',
