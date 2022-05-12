@@ -122,7 +122,7 @@ router.beforeEach((to,from,next) => {
     })
     // store.commit('setAddedRoutesFlag',true) mutation同步操作
     store.dispatch('userinfo/addedRoutesFlagAction', true) // action异步操作
-    next({ ...to, replace: true }) 
+    next()
 
   } else {
     next()

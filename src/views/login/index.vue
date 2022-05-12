@@ -1,40 +1,66 @@
 <template>
-	<form>
-		<label>Email:</label>
-		<input type="email" required>
-	</form>
+  <section class="signup-view">
+    <form @submit.prevent novalidate class="ui form">
+      <div class="ui stacked segment">
+        <EmailField v-model="user.email" />
+        <PasswordField v-model="user.password" />
+        <button
+          class="ui button red fluid"
+          :disabled="isSignupButtonDisabled"
+          @click="loginButtonPressed"
+        >
+          LOG IN
+        </button>
+      </div>
+    </form>
+  </section>
 </template>
 
-<script setup>
+<script>
+import { reactive } from "vue";
+import EmailField from "../../components/EmailField.vue";
+import PasswordField from "../../components/PasswordField.vue";
+import useFormValidation from "../../modules/useFormValidation";
+import useSubmitButtonState from "../../modules/useSubmitButtonState";
+import router from '../../router'
 
+export default {
+  components: {
+    EmailField,
+    PasswordField,
+  },
+  setup() {
+    let user = reactive({
+      email: "",
+      password: "",
+    });
+
+    const { errors } = useFormValidation();
+    const { isSignupButtonDisabled } = useSubmitButtonState(user, errors);
+
+    const loginButtonPressed = () => {
+      console.log(user);
+	  router.push({ path: '/home'})
+    };
+
+    return {
+      user,
+      isSignupButtonDisabled,
+      loginButtonPressed,
+    };
+  },
+};
 </script>
 
 <style scoped>
-form{
-	max-width: 420px;
-	margin:30px auto;
-	background: white;
-	text-align: left;
-	padding: 40px;
-	border-radius: 10px;
-}
-label{
-	color: #aaa;
-	display: inline-block;
-	margin: 25px 0 15px;
-	font-size: 0.6rem;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: bold;
+.signup-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-input{
-	display: block;
-	padding: 10px 6px;
-	width: 100%;
-	box-sizing: border-box;
-	border: none;
-	border-bottom: 1px solid #ddd;
-	color: #555;
+.form {
+  width: 450px;
 }
 </style>
