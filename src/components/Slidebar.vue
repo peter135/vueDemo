@@ -13,29 +13,29 @@
        <h3>Menu</h3>
        <div class="menu">
 
-           <button class="button" @click="ToggleHome">
+           <button class="button" :class="`${current_path=='/home' &&'button-active'}`" @click="ToggleHome">
                <span class="material-icons">home</span>
                <span class="text">home</span>
            </button>
 
            <div class="menu_t" v-if="home_expanded && is_expanded">
-              <button class="button button_t" @click="ToggleRouterPath('/home/shopping')">
+              <button class="button button_t" :class="`${current_path=='/home/shopping' &&'button-active'}`" @click="ToggleRouterPath('/home/shopping')">
                   <span class="material-icons">storefront</span>
                   <span class="text">store</span>
               </button>
            </div>
 
-           <button class="button" @click="ToggleRouterPath('/about')">
+           <button class="button" :class="`${current_path=='/about' &&'button-active'}`" @click="ToggleRouterPath('/about')">
                <span class="material-icons">visibility</span>
                <span class="text">About</span>
            </button>
 
-           <button class="button" @click="ToggleRouterPath('/team')">
+           <button class="button" :class="`${current_path=='/team' &&'button-active'}`" @click="ToggleRouterPath('/team')">
                <span class="material-icons">group</span>
                <span class="text">Team</span>
            </button>
 
-           <button class="button" @click="ToggleRouterPath('/contact')">
+           <button class="button" :class="`${current_path=='/contact' &&'button-active'}`" @click="ToggleRouterPath('/contact')">
                <span class="material-icons">email</span>
                <span class="text">Contact</span>
            </button>
@@ -54,10 +54,13 @@
 </template>
 
 <script setup>
-import{ref} from 'vue'
 import router from '@/router/index'
-const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
-const home_expanded = ref(localStorage.getItem("home_expanded") === "true")
+import{ref,computed,reactive} from 'vue'
+import { useRoute } from 'vue-router'
+
+const is_expanded = ref(localStorage.getItem("is_expanded"))
+const home_expanded = ref(localStorage.getItem("home_expanded"))
+const current_path = ref(localStorage.getItem("current_path"))
 
 const ToggleMenu = ()=> {
     is_expanded.value = !is_expanded.value
@@ -72,6 +75,9 @@ const ToggleHome = ()=> {
 
 const ToggleRouterPath = (path)=> {
     router.push({ path: path})
+    current_path.value = path
+    localStorage.setItem("current_path",current_path.value)
+    
 }
 
 </script>
@@ -180,6 +186,15 @@ aside {
             .button_t {
                     padding: 0.5rem 2rem;
             }
+        }
+
+        .button-active {
+                background-color: var(--dark-alt);
+                border-right: 5px solid var(--primary);
+
+                .material-icons, .text{
+                     color: var(--primary);
+                }
         }
     }
 
