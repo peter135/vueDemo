@@ -13,29 +13,29 @@
        <h3>Menu</h3>
        <div class="menu">
 
-           <button class="button" :class="`${current_path=='/home' &&'button-active'}`" @click="ToggleHome">
+           <button class="button" :class="`${current_path=='/home' &&'active'}`" @click="ToggleHome">
                <span class="material-icons">home</span>
                <span class="text">home</span>
            </button>
 
            <div class="menu_t" v-if="home_expanded && is_expanded">
-              <button class="button button_t" :class="`${current_path=='/home/shopping' &&'button-active'}`" @click="ToggleRouterPath('/home/shopping')">
+              <button class="button button_t" :class="`${current_path=='/home/shopping' &&'active'}`" @click="ToggleRouterPath('/home/shopping')">
                   <span class="material-icons">storefront</span>
                   <span class="text">store</span>
               </button>
            </div>
 
-           <button class="button" :class="`${current_path=='/about' &&'button-active'}`" @click="ToggleRouterPath('/about')">
+           <button class="button" :class="`${current_path=='/about' &&'active'}`" @click="ToggleRouterPath('/about')">
                <span class="material-icons">visibility</span>
                <span class="text">About</span>
            </button>
 
-           <button class="button" :class="`${current_path=='/team' &&'button-active'}`" @click="ToggleRouterPath('/team')">
+           <button class="button" :class="`${current_path=='/team' &&'active'}`" @click="ToggleRouterPath('/team')">
                <span class="material-icons">group</span>
                <span class="text">Team</span>
            </button>
 
-           <button class="button" :class="`${current_path=='/contact' &&'button-active'}`" @click="ToggleRouterPath('/contact')">
+           <button class="button" :class="`${current_path=='/contact' &&'active'}`" @click="ToggleRouterPath('/contact')">
                <span class="material-icons">email</span>
                <span class="text">Contact</span>
            </button>
@@ -44,7 +44,7 @@
 
        <div class="flex"></div>
        <div class="menu">
-          <router-link class="button" to="/settings">
+          <router-link class="button" :class="`${current_path=='/settings' &&'active'}`" to="/settings">
               <span class="material-icons">settings</span>
               <span class="text">Settings</span>
           </router-link>
@@ -176,9 +176,14 @@ aside {
 
             }
 
-            // &.router-link-exact-active {
-            //     border-right: 5px solid var(--primary);
-            // }
+            &.active {
+                background-color: var(--dark-alt);
+                border-right: 5px solid var(--primary);
+
+                .material-icons, .text{
+                     color: var(--primary);
+                }
+            }
         }
 
         .menu_t {
@@ -188,14 +193,7 @@ aside {
             }
         }
 
-        .button-active {
-                background-color: var(--dark-alt);
-                border-right: 5px solid var(--primary);
-
-                .material-icons, .text{
-                     color: var(--primary);
-                }
-        }
+     
     }
 
 
