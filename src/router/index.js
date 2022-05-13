@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/home/home.vue'
-import PageNotFound from '../views/notFound/PageNotFound.vue'
-import About from '../views/about/about.vue'
-import Login from '../views/login/index.vue'
 import store from "../store/index";
-import List from '../views/list/index.vue'
+// pages
 import Entry from '../Entry.vue'
+import Home from '../views/home/home.vue'
+import About from '../views/about/about.vue'
 import Team from '../views/team/team.vue'
 import Contact from '../views/contact/contact.vue'
 import Settings from '../views/settings/settings.vue'
+import Shopping from '../views/shopping/ShoppingHome.vue'
+import Login from '../views/login/index.vue'
+import List from '../views/list/index.vue'
+import PageNotFound from '../views/notFound/PageNotFound.vue'
 
 const routerHistory = createWebHistory()
 
@@ -27,7 +29,14 @@ export const routes = [
         {
           path: '/home',
           name:'Home',
-          component: Home
+          component: Home,
+          children: [
+            {
+              path: 'shopping',
+              name:'Shopping',
+              component: Shopping
+            },
+          ]
         },
         {
           path: '/team',

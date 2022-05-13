@@ -19,35 +19,23 @@
            </button>
 
            <div class="menu_t" v-if="home_expanded && is_expanded">
-           
-              <button class="button button_t">
-                  <span class="material-icons">home</span>
-                  <span class="text">home1</span>
+              <button class="button button_t" @click="ToggleRouterPath('/home/shopping')">
+                  <span class="material-icons">storefront</span>
+                  <span class="text">store</span>
               </button>
-
-               <button class="button button_t">
-                  <span class="material-icons">home</span>
-                  <span class="text">home2</span>
-              </button>
-
-               <button class="button button_t">
-                  <span class="material-icons">home</span>
-                  <span class="text">home3</span>
-              </button>
-
            </div>
 
-           <button class="button" @click="ToggleAbout">
+           <button class="button" @click="ToggleRouterPath('/about')">
                <span class="material-icons">visibility</span>
                <span class="text">About</span>
            </button>
 
-           <button class="button" @click="ToggleTeam">
+           <button class="button" @click="ToggleRouterPath('/team')">
                <span class="material-icons">group</span>
                <span class="text">Team</span>
            </button>
 
-           <button class="button" @click="ToggleContact">
+           <button class="button" @click="ToggleRouterPath('/contact')">
                <span class="material-icons">email</span>
                <span class="text">Contact</span>
            </button>
@@ -67,7 +55,7 @@
 
 <script setup>
 import{ref} from 'vue'
-
+import router from '@/router/index'
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
 const home_expanded = ref(localStorage.getItem("home_expanded") === "true")
 
@@ -79,6 +67,11 @@ const ToggleMenu = ()=> {
 const ToggleHome = ()=> {
     home_expanded.value = !home_expanded.value
     localStorage.setItem("home_expanded",home_expanded.value)
+    ToggleRouterPath('/home')
+}
+
+const ToggleRouterPath = (path)=> {
+    router.push({ path: path})
 }
 
 </script>
