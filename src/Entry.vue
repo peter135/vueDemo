@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import Slidebar from './components/slidebar.vue'
+import Slidebar from '@/components/slidebar.vue'
 
 </script>
 

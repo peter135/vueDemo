@@ -29,6 +29,7 @@
 import {computed,ref} from "vue";
 // Importing  the lodash library 
 import { sortBy} from 'lodash';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default {
   name: 'TableComponent',

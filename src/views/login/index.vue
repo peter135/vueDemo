@@ -23,6 +23,7 @@ import PasswordField from "../../components/PasswordField.vue";
 import useFormValidation from "../../modules/useFormValidation";
 import useSubmitButtonState from "../../modules/useSubmitButtonState";
 import router from '../../router'
+import "semantic-ui-css/semantic.min.css";
 
 export default {
   components: {
