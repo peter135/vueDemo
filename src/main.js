@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './index.css'
 import "semantic-ui-css/semantic.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 createApp(App)
