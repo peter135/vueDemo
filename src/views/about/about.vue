@@ -1,9 +1,9 @@
 <template>
   <main class="about">
     <Modal @close="toggleModal" :modalActive="modalActive">
-        <div class="modal-content">
+        <div class="modal-content-other">
           <h1>this is a modal header</h1>
-          <p>this is a mdoal message </p>
+          <p>this is a modal message </p>
         </div>
     </Modal>
     <button class="button" @click="toggleModal" type="button"> open modal</button>
@@ -20,7 +20,7 @@ export default {
       Modal
   },
   setup (){
-    const modalActive = ref(true)
+    const modalActive = ref(false)
 
     const toggleModal = ()=> {
       modalActive.value = !modalActive.value
@@ -40,7 +40,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .modal-content{
+  .modal-content-other{
       display: flex;
       flex-direction: column;
   }
