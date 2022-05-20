@@ -13,29 +13,29 @@
        <h3>Menu</h3>
        <div class="menu">
 
-           <button class="button" :class="`${current_path=='/home' &&'active'}`" @click="ToggleHome">
+           <button class="button" :class="`${current_path=='/home' &&'button-active'}`" @click="ToggleHome">
                <span class="material-icons">home</span>
                <span class="text">home</span>
            </button>
 
            <div class="menu_t" v-if="home_expanded && is_expanded">
-              <button class="button button_t" :class="`${current_path=='/home/shopping' &&'active'}`" @click="ToggleRouterPath('/home/shopping')">
+              <button class="button button_t" :class="`${current_path=='/home/shopping' &&'button-active'}`" @click="ToggleRouterPath('/home/shopping')">
                   <span class="material-icons">storefront</span>
                   <span class="text">store</span>
               </button>
            </div>
 
-           <button class="button" :class="`${current_path=='/about' &&'active'}`" @click="ToggleRouterPath('/about')">
+           <button class="button" :class="`${current_path=='/about' &&'button-active'}`" @click="ToggleRouterPath('/about')">
                <span class="material-icons">visibility</span>
                <span class="text">About</span>
            </button>
 
-           <button class="button" :class="`${current_path=='/team' &&'active'}`" @click="ToggleRouterPath('/team')">
+           <button class="button" :class="`${current_path=='/team' &&'button-active'}`" @click="ToggleRouterPath('/team')">
                <span class="material-icons">group</span>
                <span class="text">Team</span>
            </button>
 
-           <button class="button" :class="`${current_path=='/contact' &&'active'}`" @click="ToggleRouterPath('/contact')">
+           <button class="button" :class="`${current_path=='/contact' &&'button-active'}`" @click="ToggleRouterPath('/contact')">
                <span class="material-icons">email</span>
                <span class="text">Contact</span>
            </button>
@@ -44,7 +44,7 @@
 
        <div class="flex"></div>
        <div class="menu">
-          <router-link class="button" :class="`${current_path=='/settings' &&'active'}`" to="/settings">
+          <router-link class="button" to="/settings">
               <span class="material-icons">settings</span>
               <span class="text">Settings</span>
           </router-link>
@@ -54,7 +54,6 @@
 </template>
 
 <script setup>
-import '@/index.css'
 import router from '@/router/index'
 import{ref,computed,reactive} from 'vue'
 import { useRoute } from 'vue-router'
@@ -92,8 +91,8 @@ aside {
     overflow: hidden;
     padding: 1rem;
 
-    background-color: #1e293b;
-    color: #f1f5f9;
+    background-color: var(--dark);
+    color: var(--light);
 
     transition: 0.2s ease-out;
 
@@ -115,23 +114,16 @@ aside {
         transition: 0.2s ease-out;
 
         .menu-toggle {
-
-            cursor: pointer;
-            appearance: none;
-            border: none;
-            outline: none;
-            background: none;
-
             transition: 0.2s ease-out;
             .material-icons{
                 font-size: 2rem;
-                color: #f1f5f9;
+                color: var(--light);
                 transition: 0.2s ease-out;
             }
 
             &:hover {
                 .material-icons{
-                     color: #4ade80;
+                     color: var(--primary);
                      transform:translateX(0.5rem)
                 }
             }
@@ -141,11 +133,10 @@ aside {
     h3,.button .text {
         opacity: 0;
         transition: 0.3s ease-out;
-      
     }
 
     h3 {
-        color: #64748b;
+        color: var(--grey);
         font-size: 0.875rem;
         margin-bottom: 0.5rem;
         text-transform: uppercase;
@@ -166,39 +157,28 @@ aside {
             padding: 0.5rem 1rem;
             transition: 0.2s ease-out;
 
-            cursor: pointer;
-            appearance: none;
-            border: none;
-            outline: none;
-            background: none;
-
             .material-icons {
                 font-size: 2rem;
-                color: #f1f5f9;
+                color: var(--light);
                 transition: 0.2s ease-out;
             }
 
             .text {
-                color: #f1f5f9;
+                color: var(--light);
                 transition: 0.2s ease-out;
             }
 
             &:hover {
-                background-color: #1e293b;
+                background-color: var(--dark-alt);
                 .material-icons, .text{
-                     color: #4ade80;
+                     color: var(--primary);
                 }
 
             }
 
-            &.active {
-                background-color: #334155;
-                border-right: 5px solid #4ade80;
-
-                .material-icons, .text{
-                     color: #4ade80;
-                }
-            }
+            // &.router-link-exact-active {
+            //     border-right: 5px solid var(--primary);
+            // }
         }
 
         .menu_t {
@@ -208,13 +188,20 @@ aside {
             }
         }
 
-     
+        .button-active {
+                background-color: var(--dark-alt);
+                border-right: 5px solid var(--primary);
+
+                .material-icons, .text{
+                     color: var(--primary);
+                }
+        }
     }
 
 
 
     &.is-expanded {
-        width: 300px;
+        width: var(--slidebar-width);
         
         .menu-toggle-wrap{
             top: -3rem;
@@ -228,7 +215,7 @@ aside {
         }
 
         .button {
-            width: 300px;
+            width: var(--slidebar-width);
             .material-icons {
                 margin-right: 1rem;
             }
