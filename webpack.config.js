@@ -21,29 +21,48 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        loader: 'css-loader',
-        options: {
-          url: {
-            filter: (url, resourcePath) => {
-              // resourcePath - path to css file
-  
-              // Don't handle `data:` urls
-              if (url.startsWith('data:')) {
-                return false;
-              }
-  
-              return true;
-            },
+        use:[
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url, resourcePath) => {
+                  // resourcePath - path to css file
+      
+                  // Don't handle `data:` urls
+                  if (url.startsWith('data:')) {
+                    return false;
+                  }
+      
+                  return true;
+                },
+              },
+            } 
           },
-        } 
+          {
+          // Run postcss actions
+             loader: 'postcss-loader',
+             options: {
+               // `postcssOptions` is needed for postcss 8.x;
+               // if you use postcss 7.x skip the key
+               postcssOptions: {
+                 // postcss plugins, can be exported to postcss.config.js
+                 plugins: function () {
+                   return [
+                     require('autoprefixer')
+                   ];
+                 }
+               }
+             }
+           }, ]
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader','sass-loader',]
+        use: ['style-loader', 'css-loader','postcss-loader','sass-loader',]
       },
       {
         test: /\.less$/i,
-        use: ['style-loader','css-loader','less-loader',]
+        use: ['style-loader','css-loader','postcss-loader','less-loader',]
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
