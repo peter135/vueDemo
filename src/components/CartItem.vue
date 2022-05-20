@@ -78,7 +78,7 @@ export default {
 
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .cart-item-row{
     border-bottom: 1px solid #ccc;
     margin-top: 20px;

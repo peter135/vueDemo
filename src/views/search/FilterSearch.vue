@@ -38,7 +38,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
  input[type='text'] {
     margin-bottom: 20px;
     padding: 10px;

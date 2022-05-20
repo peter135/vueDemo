@@ -23,7 +23,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .sidebar-container {
   transition: width 0.28s;
   width: 180px !important;

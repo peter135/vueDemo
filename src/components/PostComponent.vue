@@ -11,7 +11,7 @@
   	}
   }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .post {
   	background: #fff;
   	padding: 1.5em;

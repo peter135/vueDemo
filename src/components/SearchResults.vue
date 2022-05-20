@@ -34,7 +34,7 @@ export default {
     
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .root{
     width: 400px;
 	margin: 0 auto;

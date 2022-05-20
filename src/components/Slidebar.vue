@@ -54,6 +54,7 @@
 </template>
 
 <script setup>
+import '@/index.css'
 import router from '@/router/index'
 import{ref,computed,reactive} from 'vue'
 import { useRoute } from 'vue-router'
@@ -91,8 +92,8 @@ aside {
     overflow: hidden;
     padding: 1rem;
 
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: #1e293b;
+    color: #f1f5f9;
 
     transition: 0.2s ease-out;
 
@@ -114,16 +115,23 @@ aside {
         transition: 0.2s ease-out;
 
         .menu-toggle {
+
+            cursor: pointer;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: none;
+
             transition: 0.2s ease-out;
             .material-icons{
                 font-size: 2rem;
-                color: var(--light);
+                color: #f1f5f9;
                 transition: 0.2s ease-out;
             }
 
             &:hover {
                 .material-icons{
-                     color: var(--primary);
+                     color: #4ade80;
                      transform:translateX(0.5rem)
                 }
             }
@@ -133,10 +141,11 @@ aside {
     h3,.button .text {
         opacity: 0;
         transition: 0.3s ease-out;
+      
     }
 
     h3 {
-        color: var(--grey);
+        color: #64748b;
         font-size: 0.875rem;
         margin-bottom: 0.5rem;
         text-transform: uppercase;
@@ -157,31 +166,37 @@ aside {
             padding: 0.5rem 1rem;
             transition: 0.2s ease-out;
 
+            cursor: pointer;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: none;
+
             .material-icons {
                 font-size: 2rem;
-                color: var(--light);
+                color: #f1f5f9;
                 transition: 0.2s ease-out;
             }
 
             .text {
-                color: var(--light);
+                color: #f1f5f9;
                 transition: 0.2s ease-out;
             }
 
             &:hover {
-                background-color: var(--dark-alt);
+                background-color: #1e293b;
                 .material-icons, .text{
-                     color: var(--primary);
+                     color: #4ade80;
                 }
 
             }
 
             &.active {
-                background-color: var(--dark-alt);
-                border-right: 5px solid var(--primary);
+                background-color: #334155;
+                border-right: 5px solid #4ade80;
 
                 .material-icons, .text{
-                     color: var(--primary);
+                     color: #4ade80;
                 }
             }
         }
@@ -199,7 +214,7 @@ aside {
 
 
     &.is-expanded {
-        width: var(--slidebar-width);
+        width: 300px;
         
         .menu-toggle-wrap{
             top: -3rem;
@@ -213,7 +228,7 @@ aside {
         }
 
         .button {
-            width: var(--slidebar-width);
+            width: 300px;
             .material-icons {
                 margin-right: 1rem;
             }

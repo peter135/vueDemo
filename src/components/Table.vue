@@ -79,7 +79,7 @@ export default {
  
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 table th:hover {
         background:#f2f2f2;
       }

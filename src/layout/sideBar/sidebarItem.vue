@@ -44,7 +44,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .nest-menu .el-submenu > .el-submenu__title,.el-submenu .el-menu-item {min-width: 180px !important;background-color: #1f2d3d !important;}
 .nest-menu .el-submenu > .el-submenu__title,.el-submenu .el-menu-item :hover {background-color: #001528 !important;}
 .el-menu--collapse .el-menu .el-submenu {min-width: 180px !important;}

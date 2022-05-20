@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .signup-view {
   display: flex;
   justify-content: center;

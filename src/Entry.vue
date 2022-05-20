@@ -5,8 +5,19 @@
   </div>
 </template>
 
-<script setup>
+<script >
 import Slidebar from '@/components/slidebar.vue'
+
+export default {
+  name:'Entry',
+  components:{
+      Slidebar
+  },
+
+  setup (){
+  }
+
+}
 
 </script>
 

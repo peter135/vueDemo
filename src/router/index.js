@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory} from 'vue-router'
 import store from "../store/index";
 // pages
 import Entry from '../Entry.vue'
@@ -9,10 +9,9 @@ import Contact from '../views/contact/contact.vue'
 import Settings from '../views/settings/settings.vue'
 import Shopping from '../views/shopping/ShoppingHome.vue'
 import Login from '../views/login/index.vue'
-import List from '../views/list/index.vue'
 import PageNotFound from '../views/notFound/PageNotFound.vue'
 
-const routerHistory = createWebHistory()
+const routerHistory = createWebHashHistory()
 
 //静态路由
 export const routes = [
@@ -76,11 +75,6 @@ export const routes = [
     
 //动态路由
 export const dynamic_routes = [
-   {
-       path:"/list", // 列表页
-       name:"List",
-       component: List
-   },
    {
        path:"/detail", // 详情页
        name:"Detail",

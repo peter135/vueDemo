@@ -39,7 +39,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .header-temp-container{border-bottom: 1px solid #ddd; width: 100%;height: 60px;}
 .userInfo{display: flex;flex-direction: row;align-items: center;justify-content: flex-end;height: 100%;margin-right: 20px;}
 .eImage{width: 40px;height: 40px;border-radius: 50%;margin-right: 10px;}
