@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 最新的 vue-loader 中，VueLoaderPlugin 插件的位置有所改变
 const { VueLoaderPlugin } = require('vue-loader')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -45,10 +46,17 @@ module.exports = {
         use: ['style-loader','css-loader','less-loader',]
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/img/[hash][ext]'
+          filename: 'assets/img/[hash].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[hash].[ext]'
         }
       }
     ]
@@ -57,7 +65,7 @@ module.exports = {
     extensions: ['.js', '.vue','.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.svg', '.less'],
     alias: {
         '@': path.resolve(__dirname, './src'),
-        'assets': path.resolve(__dirname, './src/assets')
+        // 'assets': path.resolve(__dirname, './src/assets')
     }
   },
   plugins: [
@@ -67,7 +75,9 @@ module.exports = {
       title: '手搭 Vue 开发环境'
     }),
     // 添加 VueLoaderPlugin 插件
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     // contentBase: path.resolve(__dirname, './dist'),
