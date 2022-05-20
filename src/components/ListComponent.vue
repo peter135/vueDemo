@@ -25,9 +25,9 @@ export default {
   	})
 
   	onUnmounted(() => {
-        console.log('onUnmounted')
-        let element = scrollComponent.value;
-  		element.removeEventListener("scroll", handleScroll)
+        // console.log('onUnmounted')
+        // let element = scrollComponent.value;
+  		// element.removeEventListener("scroll", handleScroll)
   	})
 
     const loadMorePosts = () => {
@@ -39,23 +39,21 @@ export default {
     const handleScroll = (e) => {
 
      let element = scrollComponent.value;
-     console.log('滚动',e.target.scrollTop)
-     console.log('滚动',e.target.scrollHeight)
+     const height = Math.ceil(element.getBoundingClientRect().height)
+     const scrollTop = e.target.scrollTop
+     const scrollHeight = e.target.scrollHeight
 
-    //  console.log('滚动1',element.innerHeight)
+     const toggleDistance = 20;//触发距离
 
-    // if (
-	// 			window.scrollY + window.innerHeight >=
-	// 			document.body.scrollHeight - 50
-	// 		){
-    //             loadMorePosts();
-    //         }
-    //   let element = scrollComponent.value;
+     console.log('滚动 scrollTop',scrollTop)
+     console.log('滚动 scrollHeight',scrollHeight)
+     console.log('滚动 height',height)
 
-    //   console.log('bottom',element.getBoundingClientRect().bottom)
-    //   if (element.getBoundingClientRect().bottom < window.innerHeight) {
-    //     loadMorePosts();
-    //   }
+     if (scrollTop + height + toggleDistance >= scrollHeight) {
+        console.log('加载更多')
+        loadMorePosts();
+     }
+
     };
 
   	return {
@@ -69,11 +67,7 @@ export default {
 <style lang="scss" scoped>
 
 .scrolling-component{
-
-	// padding: 0 2rem;
-	// max-width: 640px;
-	// margin: 0 auto;
-    height:200px;
+    height:80vh;
     overflow-y:auto
 }
 
