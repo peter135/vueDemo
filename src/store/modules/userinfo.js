@@ -53,7 +53,10 @@ const state = {
                     ]
                 }
             ]
-        }]
+        }],
+    showLoading:false,
+    loadingText:'Loading'
+
 }
 
 const actions = {

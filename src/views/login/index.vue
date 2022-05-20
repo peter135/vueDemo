@@ -1,4 +1,5 @@
 <template>
+  <Loading :text="loadingText" v-if="showLoading" />
   <section class="signup-view">
     <form @submit.prevent novalidate class="ui form">
       <div class="ui stacked segment">
@@ -17,20 +18,33 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive ,computed} from "vue";
+import Loading from "../../components/Loading.vue";
 import EmailField from "../../components/EmailField.vue";
 import PasswordField from "../../components/PasswordField.vue";
 import useFormValidation from "../../modules/useFormValidation";
 import useSubmitButtonState from "../../modules/useSubmitButtonState";
 import router from '../../router'
 import "semantic-ui-css/semantic.min.css";
+import {useStore} from "vuex";
 
 export default {
   components: {
     EmailField,
     PasswordField,
+    Loading
   },
   setup() {
+
+    const store = useStore();
+    const  showLoading = computed(function () {
+            return store.state.userinfo.showLoading
+    });
+
+    const  loadingText = computed(function () {
+            return store.state.userinfo.loadingText
+    });
+
     let user = reactive({
       email: "",
       password: "",
@@ -45,6 +59,8 @@ export default {
     };
 
     return {
+      showLoading,
+      loadingText,
       user,
       isSignupButtonDisabled,
       loginButtonPressed,
