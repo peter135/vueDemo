@@ -223,9 +223,9 @@ aside {
     }
 
 
-    @media (max-width:768px) {
-        position: fixed;
-        z-index: 99;
-    }
+    // @media (max-width:768px) {
+    //     position: fixed;
+    //     z-index: 99;
+    // }
 }
 </style>
