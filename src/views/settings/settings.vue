@@ -4,9 +4,9 @@
       <ti-form-item label="名称" prop="name">
         <ti-input v-model="formData.name"></ti-input>
       </ti-form-item>
-      <!-- <ti-form-item label="邮箱" prop="email">
+      <ti-form-item label="邮箱" prop="email">
         <ti-input v-model="formData.email"></ti-input>
-      </ti-form-item> -->
+      </ti-form-item>
       <ti-form-item>
         <button class="button" @click="onSubmit">提交</button>
       </ti-form-item>
@@ -27,12 +27,12 @@ export default {
   },
   setup() {
     const formData = reactive({ name: "" ,
-    // email:""
+    email:""
     
     });
     const rules = {
       name: [{ required: "true", message: "请输入名称" }],
-      // email: [{ required: "true", message: "请输入邮箱" }],
+      email: [{ required: "true", message: "请输入邮箱" }],
     };
     const { proxy } = getCurrentInstance();
     const onSubmit = (e) => {
