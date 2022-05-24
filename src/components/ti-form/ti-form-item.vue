@@ -68,11 +68,11 @@ export default {
       proxy.$sub("ti.form.item.validate", validate);
 
       // 通过父组件的事件总线，将表单项校验方法传递给父组件
-      // if (props.prop) {
-      //   tiForm;
-      //   proxy.$pub("ti.form.addField", tiFormItem);
-      //   // tiForm.formEmitter.emit("ti.form.addField", tiFormItem);
-      // }
+      if (props.prop) {
+        // tiForm;
+        proxy.$pub("ti.form.addField", tiFormItem);
+        // tiForm.formEmitter.emit("ti.form.addField", tiFormItem);
+      }
     });
 
     return { error, validate };

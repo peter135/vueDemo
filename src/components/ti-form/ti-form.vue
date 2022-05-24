@@ -31,6 +31,7 @@ export default {
     };
     proxy.$sub("ti.form.addField", (field) => {
       field && fields.push(field[0]);
+      console.log('fields',fields)
     });
 
     const tiForm = reactive({
