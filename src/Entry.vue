@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <slide-bar/>
+    <Slidebar/>
     <router-view/>
   </div>
 </template>
@@ -11,7 +11,7 @@ import Slidebar from '@/components/slidebar.vue'
 export default {
   name:'Entry',
   components:{
-      Slidebar:'slide-bar'
+      Slidebar
   },
 
   setup (){
