@@ -13,7 +13,7 @@
        <h3>Menu</h3>
        <div class="menu">
 
-           <button class="button" :class="`${current_path=='/home' &&'button-active'}`" @click="ToggleHome">
+           <button class="button" :class="`${current_path=='/home/index' &&'button-active'}`" @click="ToggleHome">
                <span class="material-icons">home</span>
                <span class="text">home</span>
            </button>
@@ -70,7 +70,7 @@ const ToggleMenu = ()=> {
 const ToggleHome = ()=> {
     home_expanded.value = !home_expanded.value
     localStorage.setItem("home_expanded",home_expanded.value)
-    ToggleRouterPath('/home')
+    ToggleRouterPath('/home/index')
 }
 
 const ToggleRouterPath = (path)=> {

@@ -10,6 +10,7 @@ import Settings from '../views/settings/settings.vue'
 import Shopping from '../views/shopping/ShoppingHome.vue'
 import Login from '../views/login/index.vue'
 import PageNotFound from '../views/notFound/PageNotFound.vue'
+import HomeIndex from '../views/home/homeIndex.vue'
 
 const routerHistory = createWebHashHistory()
 
@@ -34,6 +35,11 @@ export const routes = [
               path: 'shopping',
               name:'Shopping',
               component: Shopping
+            },
+            {
+              path: 'index',
+              name:'HomeIndex',
+              component: HomeIndex
             },
           ]
         },
