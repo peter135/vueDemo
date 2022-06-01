@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import emitter from "./plugins/emitter";
 import { createDynamicForms } from '@asigloo/vue-dynamic-forms';
+import './index.css'
 
 const VueDynamicForms = createDynamicForms({
     // Global Options go here

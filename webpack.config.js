@@ -22,6 +22,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
+         
           {
             loader: 'style-loader',
           },
@@ -42,9 +43,26 @@ module.exports = {
                  },
             } 
           },
+          // {
+          //   loader: 'adjust-sourcemap-loader',
+          // },
           {
-            loader: 'adjust-sourcemap-loader',
-          },
+            // Run postcss actions
+               loader: 'postcss-loader',
+              //  options: {
+              //    // `postcssOptions` is needed for postcss 8.x;
+              //    // if you use postcss 7.x skip the key
+              //    postcssOptions: {
+              //      // postcss plugins, can be exported to postcss.config.js
+              //      plugins: function () {
+              //        return [
+              //          require('tailwindcss'),
+              //         //  require('autoprefixer')
+              //        ];
+              //      }
+              //    }
+              //  }
+        }, 
           
         //  { loader:'resolve-url-loader',
         //   options: { removeCR: true, sourceMap: true }  }],
