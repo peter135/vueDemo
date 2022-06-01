@@ -21,8 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [
-         
+        use: [  
           {
             loader: 'style-loader',
           },
@@ -43,67 +42,9 @@ module.exports = {
                  },
             } 
           },
-          // {
-          //   loader: 'adjust-sourcemap-loader',
-          // },
           {
-            // Run postcss actions
-               loader: 'postcss-loader',
-              //  options: {
-              //    // `postcssOptions` is needed for postcss 8.x;
-              //    // if you use postcss 7.x skip the key
-              //    postcssOptions: {
-              //      // postcss plugins, can be exported to postcss.config.js
-              //      plugins: function () {
-              //        return [
-              //          require('tailwindcss'),
-              //         //  require('autoprefixer')
-              //        ];
-              //      }
-              //    }
-              //  }
-        }, 
-          
-        //  { loader:'resolve-url-loader',
-        //   options: { removeCR: true, sourceMap: true }  }],
-        // include: [
-        //   path.join(__dirname, 'src'),
-        //   /node_modules/
-        // ],
-        // use:[
-        //   {
-        //     loader: 'css-loader',
-        //     options: {
-        //       url: {
-        //         filter: (url, resourcePath) => {
-        //           // resourcePath - path to css file
-      
-        //           // Don't handle `data:` urls
-        //           if (url.startsWith('data:')) {
-        //             return false;
-        //           }
-      
-        //           return true;
-        //         },
-        //       },
-        //     } 
-        //   },
-        //   {
-        //   // Run postcss actions
-        //      loader: 'postcss-loader',
-        //      options: {
-        //        // `postcssOptions` is needed for postcss 8.x;
-        //        // if you use postcss 7.x skip the key
-        //        postcssOptions: {
-        //          // postcss plugins, can be exported to postcss.config.js
-        //          plugins: function () {
-        //            return [
-        //              require('autoprefixer')
-        //            ];
-        //          }
-        //        }
-        //      }
-        //    }, 
+            loader: 'postcss-loader',
+          }
       ]
       },
       {
