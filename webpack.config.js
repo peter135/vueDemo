@@ -3,6 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 最新的 vue-loader 中，VueLoaderPlugin 插件的位置有所改变
 const { VueLoaderPlugin } = require('vue-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob')
+const PATHS = {
+  src: path.join(__dirname, './src')
+}
 
 module.exports = {
   mode: 'development',
@@ -22,9 +30,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [  
-          {
-            loader: 'style-loader',
-          },
+          MiniCssExtractPlugin.loader,
+          // {
+          //   loader: 'style-loader',
+          // },
           {
             loader: 'css-loader',
             options: {
@@ -49,11 +58,15 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader','postcss-loader','sass-loader',]
+        use: [MiniCssExtractPlugin.loader,
+          // 'style-loader', 
+          'css-loader','postcss-loader','sass-loader',]
       },
       {
         test: /\.less$/i,
-        use: ['style-loader','css-loader','postcss-loader','less-loader',]
+        use: [MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          'css-loader','postcss-loader','less-loader',]
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -71,6 +84,26 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimize: true, // 可省略，默认最优配置：生产环境，压缩 true。开发环境，不压缩 false
+    minimizer: [
+        new TerserPlugin({
+            parallel: true, // 可省略，默认开启并行
+            terserOptions: {
+                toplevel: true, // 最高级别，删除无用代码
+                ie8: true,
+                safari10: true,
+            }
+        }),
+        new CssMinimizerPlugin({
+          parallel: true, // 可省略，默认开启并行
+          // sourceMap: true, // 可省略，默认遵循webpack的devtool配置
+          minimizerOptions: {
+              // preset: 'advanced', // 需额外安装
+          },
+      })
+    ]
+  },
   resolve: {
     extensions: ['.js', '.vue','.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.svg', '.less'],
     alias: {
@@ -79,6 +112,10 @@ module.exports = {
     }
   },
   plugins: [
+    new MiniCssExtractPlugin(),
+
+    new MiniCssExtractPlugin(),
+
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
@@ -88,6 +125,15 @@ module.exports = {
     new VueLoaderPlugin(),
 
     new CleanWebpackPlugin(),
+
+    // new PurgecssPlugin({
+    //   paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+    // }),
+
+    // new MiniCssExtractPlugin({
+    //   filename: 'style.[contenthash].css', // 指定文件名 生产环境可写成 style.[contenthash].css 避免缓存问题
+    // }),
+
   ],
   devServer: {
     // contentBase: path.resolve(__dirname, './dist'),
