@@ -11,6 +11,8 @@ const glob = require('glob')
 const PATHS = {
   src: path.join(__dirname, './src')
 }
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 
 module.exports = {
   mode: 'development',
@@ -112,6 +114,8 @@ module.exports = {
     }
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
+    
     new MiniCssExtractPlugin(),
 
     new MiniCssExtractPlugin(),
