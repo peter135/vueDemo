@@ -174,7 +174,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
-      title: '手搭 Vue 开发环境'
+      title: '手搭 Vue 开发环境',
+      favicon:path.resolve(__dirname, './favicon.ico'),
     }),
     // 添加 VueLoaderPlugin 插件
     new VueLoaderPlugin(),
