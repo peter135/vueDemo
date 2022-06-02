@@ -28,7 +28,7 @@
 <script>
 import {computed,ref} from "vue";
 // Importing  the lodash library 
-import { sortBy} from 'lodash';
+// import { sortBy} from 'lodash';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default {
@@ -51,7 +51,7 @@ export default {
     const sortTable = (col) => {
       sort.value = true
        // Use of _.sortBy() method
-      updatedList.value = sortBy(props.studentData,col)
+      // updatedList.value = sortBy(props.studentData,col)
       }
 
     const sortedList = computed(() => {

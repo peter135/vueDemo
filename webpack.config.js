@@ -6,13 +6,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const PurgecssPlugin = require('purgecss-webpack-plugin')
-const glob = require('glob')
-const PATHS = {
-  src: path.join(__dirname, './src')
-}
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
+const CompressionPlugin = require('compression-webpack-plugin')
+// const PurgecssPlugin = require('purgecss-webpack-plugin')
+// const glob = require('glob')
+// const PATHS = {
+//   src: path.join(__dirname, './src')
+// }
 
 module.exports = {
   mode: 'development',
@@ -104,7 +104,21 @@ module.exports = {
               // preset: 'advanced', // 需额外安装
           },
       })
-    ]
+    ],
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+      // 重复打包问题
+      cacheGroups:{
+        vendors:{ // node_modules里的代码
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+          // name: 'vendors', 一定不要定义固定的name
+          priority: 10, // 优先级
+          enforce: true 
+        }
+      }
+    }
   },
   resolve: {
     extensions: ['.js', '.vue','.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.svg', '.less'],
@@ -114,8 +128,14 @@ module.exports = {
     }
   },
   plugins: [
+    // new CompressionPlugin({
+    //   algorithm: 'gzip',
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // }),
+
     new BundleAnalyzerPlugin(),
-    
+
     new MiniCssExtractPlugin(),
 
     new MiniCssExtractPlugin(),
@@ -150,5 +170,6 @@ module.exports = {
         changeOrigin: true,
       },
     },
-  }
+  },
+
 }
