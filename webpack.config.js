@@ -107,20 +107,44 @@ module.exports = {
           },
       })
     ],
+    // splitChunks 配置
     splitChunks: {
-      // include all types of chunks
-      chunks: 'all',
-      // 重复打包问题
-      cacheGroups:{
-        vendors:{ // node_modules里的代码
+      cacheGroups: {
+        default: {
+          name: 'vendor',
+          // 把第三方库放到 vendor 里，包括 vue, vue-router, vuex 等
+          // 因为他们都是从 node_modules 里加载的，这里直接正则匹配
           test: /[\\/]node_modules[\\/]/,
-          chunks: "all",
-          // name: 'vendors', 一定不要定义固定的name
-          priority: 10, // 优先级
-          enforce: true 
-        }
-      }
-    }
+          chunks: 'initial',
+          // 调整优先级，优先处理
+          priority: 10,
+        },
+        common: {
+          chunks: 'all',
+          name: 'common',
+          // 匹配 entry 里的 common 配置
+          test: 'common',
+        },
+      },
+    },
+	  // runtime 代码放在 runtime 文件中
+    runtimeChunk: {
+      name: 'runtime',
+    },
+    // splitChunks: {
+    //   // include all types of chunks
+    //   chunks: 'all',
+    //   // 重复打包问题
+    //   cacheGroups:{
+    //     vendors:{ // node_modules里的代码
+    //       test: /[\\/]node_modules[\\/]/,
+    //       chunks: "all",
+    //       // name: 'vendors', 一定不要定义固定的name
+    //       priority: 10, // 优先级
+    //       enforce: true 
+    //     }
+    //   }
+    // }
   },
   resolve: {
     extensions: ['.js', '.vue','.jsx', '.ts', '.tsx', '.css', '.scss', '.sass', '.svg', '.less'],
