@@ -8,6 +8,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CompressionPlugin = require('compression-webpack-plugin')
+const webpack = require('webpack');
+
 // const PurgecssPlugin = require('purgecss-webpack-plugin')
 // const glob = require('glob')
 // const PATHS = {
@@ -133,6 +135,11 @@ module.exports = {
     //   threshold: 10240,
     //   minRatio: 0.8
     // }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
 
     new BundleAnalyzerPlugin(),
 
