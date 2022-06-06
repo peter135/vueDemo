@@ -56,6 +56,9 @@ export const routes = [
         {
           path: '/settings',
           name:'Settings',
+          meta: {
+            requiresAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
           component: Settings
         },
      ]
@@ -131,10 +134,25 @@ router.beforeEach((to,from,next) => {
     })
     // store.commit('setAddedRoutesFlag',true) mutation同步操作
     store.dispatch('userinfo/addedRoutesFlagAction', true) // action异步操作
-    next()
+    // next()
 
+  }
+  
+  // 登录拦截
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    let token = localStorage.getItem('token')
+    // console.log("token",token)
+    // 若需要登录访问，检查是否为登录状态
+    if (!token) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
   } else {
-    next()
+    next() // 确保一定要调用 next()
   }
 
   // 【登录 | 非登录判断】

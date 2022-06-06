@@ -44,10 +44,10 @@
 
        <div class="flex"></div>
        <div class="menu">
-          <router-link class="button" to="/settings">
+           <button class="button" :class="`${current_path=='/settings' &&'button-active'}`" @click="ToggleRouterPath('/settings')">
               <span class="material-icons">settings</span>
               <span class="text">Settings</span>
-          </router-link>
+          </button>
        </div>
 
     </aside>
