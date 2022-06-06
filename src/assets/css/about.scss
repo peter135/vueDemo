@@ -1,0 +1,33 @@
+ @mixin rounded-corners {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  }
+
+  .modal-content-other{
+      display: flex;
+      flex-direction: column;
+  }
+
+  h1,p {
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .button {
+     background: crimson;
+     padding: 20px 30px;
+     color: #fff;
+     cursor: pointer;
+     appearance: none;
+     border: none;
+     outline: none;
+    @include rounded-corners;
+  }

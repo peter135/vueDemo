@@ -33,39 +33,17 @@ export default {
 
 <style lang="scss" scoped>
 
+$success-color: rgba(0,176,234,0.5);
+
 .about {
-  background-color: rgba(0,176,234,0.5);
+  background-color: $success-color;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .modal-content-other{
-      display: flex;
-      flex-direction: column;
-  }
+  @import "../../assets/css/about.scss"
 
-  h1,p {
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  p {
-    font-size: 18px;
-  }
-
-  .button {
-     background: crimson;
-     padding: 20px 30px;
-     color: #fff;
-     cursor: pointer;
-     appearance: none;
-     border: none;
-     outline: none;
-  }
 }
 
 </style>
