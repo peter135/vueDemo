@@ -116,7 +116,7 @@ router.beforeEach((to,from,next) => {
   // console.log('flag',store.state.userinfo.addedRoutes)
   // console.log('route to ',to)
   // console.log('route from ',from)
-  console.log('routes',router.getRoutes())
+  // console.log('routes',router.getRoutes())
 
   // 【用户角色权限控制 | 动态添加路由】
   if(store.state.userinfo.user && !store.state.userinfo.addedRoutes){ //从vuex中拿到用户信息

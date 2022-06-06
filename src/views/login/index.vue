@@ -54,8 +54,10 @@ export default {
     const { isSignupButtonDisabled } = useSubmitButtonState(user, errors);
 
     const loginButtonPressed = () => {
-      console.log(user);
-	  router.push({ path: '/home'})
+        // console.log(user);
+        if(user.email === '123@163.com'){
+          	router.push({ path: '/home'})
+        }
     };
 
     return {
