@@ -159,13 +159,14 @@ module.exports = {
     //   threshold: 10240,
     //   minRatio: 0.8
     // }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
+    
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify('production')
+    //   }
+    // }),
 
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
 
     new MiniCssExtractPlugin(),
 
