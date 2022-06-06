@@ -9,7 +9,7 @@
     </div>
     <h1 class="text-4xl font-bold text-center text-blue-500">Hello world, Tailwind by webpack-postcss!</h1> 
       </div>-->
-  <div class="container-center">
+  <main class="container-center">
     <div class="card">
       <theme-button />
       <p>Wer sitzt dort so spät, bei Nacht und Wind?</p>
@@ -17,7 +17,7 @@
       <p>Man hört ihn seufzen, ziemlich hart -</p>
       <p>Sonntag ist's, die Deadline naht</p>
     </div>
-  </div>
+  </main>
 
 </template>
 
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 p {
   color: var(--text-primary-color);
@@ -42,7 +42,6 @@ p {
 .container-center {
   background-color: var(--background-color-primary);
   height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;

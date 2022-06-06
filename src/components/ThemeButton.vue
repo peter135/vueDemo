@@ -106,6 +106,6 @@ export default {
 }
 
 .switch-toggle-checked {
-  transform: translateX(calc(var(--element-size) * 0.7)) !important;
+  transform: translateX(calc(var(--element-size) * 0.6)) !important;
 }
 </style>
