@@ -27,6 +27,7 @@ import useSubmitButtonState from "../../modules/useSubmitButtonState";
 import router from '../../router'
 import "semantic-ui-css/semantic.min.css";
 import {useStore} from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -53,11 +54,18 @@ export default {
     const { errors } = useFormValidation();
     const { isSignupButtonDisabled } = useSubmitButtonState(user, errors);
 
+    const router = useRouter()
+
     const loginButtonPressed = () => {
         // console.log(user);
+        const redirect = router.currentRoute.value.query?.redirect
         if(user.email === '123@163.com'){
-          	router.push({ path: '/home'})
+            localStorage.setItem('token','123')
+            if (redirect && redirect.length>0){
+                router.push({ path: redirect})
+            }
         }
+
     };
 
     return {

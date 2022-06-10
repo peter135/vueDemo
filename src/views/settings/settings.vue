@@ -11,6 +11,9 @@
         <button class="button" @click="onSubmit">提交</button>
       </ti-form-item>
     </ti-form>
+    
+    <button class="button marginTop" @click="reset('role')">reset</button>
+
   </div>
 </template>
 <script>
@@ -41,7 +44,14 @@ export default {
         console.log("valid", valid);
       });
     };
-    return { formData, rules, onSubmit };
+
+   const reset = (role) => {
+     console.log('role',role)
+     localStorage.removeItem('token')
+
+    };
+
+    return { formData, rules, onSubmit,reset };
   },
 };
 </script>
@@ -54,14 +64,22 @@ export default {
     margin: auto;
 
      .button {
-     background: crimson;
-     padding: 10px 10px;
-     color: #fff;
-     cursor: pointer;
-     appearance: none;
-     border: none;
-     outline: none;
-  }
+       background: crimson;
+       padding: 10px 10px;
+       color: #fff;
+       cursor: pointer;
+       appearance: none;
+       border: none;
+       outline: none;
+
+       &.marginTop{
+           margin-top: 20px;
+
+       }
+
+     }
+
+
 }
 
 </style>>
