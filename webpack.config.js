@@ -40,9 +40,6 @@ module.exports = {
                    },
                  },
             } 
-          },
-          {
-            loader: 'postcss-loader',
           }
       ]
       },
@@ -50,13 +47,13 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader, 
-          'css-loader','postcss-loader','sass-loader',]
+          'css-loader','sass-loader',]
       },
       {
         test: /\.less$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader','postcss-loader','less-loader',]
+          'css-loader','less-loader',]
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
