@@ -155,6 +155,7 @@ module.exports = {
   devServer: {
     // contentBase: path.resolve(__dirname, './dist'),
     port: 3000,
+    open:true,
     hot: true,
     proxy: {
       '/api': {
