@@ -5,6 +5,8 @@ import store from './store'
 import emitter from "./plugins/emitter";
 import { createDynamicForms } from '@asigloo/vue-dynamic-forms';
 import './index.css'
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 
 const VueDynamicForms = createDynamicForms({
     // Global Options go here
@@ -12,8 +14,8 @@ const VueDynamicForms = createDynamicForms({
   
 export const app = createApp(App)
 app.use(store)
+app.use(Antd)
 app.use(router)
 app.use(emitter)
 app.use(VueDynamicForms)
 app.mount('#root')
-
