@@ -29,7 +29,6 @@
 import {computed,ref} from "vue";
 // Importing  the lodash library 
 // import { sortBy} from 'lodash';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default {
   name: 'TableComponent',
@@ -80,6 +79,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 table th:hover {
         background:#f2f2f2;
       }

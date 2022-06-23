@@ -1,14 +1,25 @@
 <template>
 
 <main>
-  <div class="container text-center  mt-5 mb-5">
+  <!-- <div class="container text-center  mt-5 mb-5">
     <h1 class="mt-5 fw-bolder text-success "> Student's Database </h1>
      <div class="table-responsive my-5">
       
-      <!-- The table component -->
        <Table :fields='fields' :studentData ="studentData"></Table>
      </div>
-  </div>
+  </div> -->
+
+<div class="row ">
+  <div class="col-12 col-md-8 _red">.col-12 .col-md-8</div>
+  <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
+</div>
+
+<div class="row">
+  <div class="col-6 col-md-4 _red">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4 _blue">.col-6 .col-md-4</div>
+</div>
+
 </main>
 
 </template>
@@ -42,3 +53,20 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+@import "bootstrap/dist/css/bootstrap.min.css";
+._red  {
+  background: red;
+}
+
+._green  {
+  background: green;
+}
+
+._blue  {
+  background: blue;;
+}
+
+</style>>
