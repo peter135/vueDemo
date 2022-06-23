@@ -1,6 +1,6 @@
 <template>
 
-<main>
+<!-- <main> -->
   <!-- <div class="container text-center  mt-5 mb-5">
     <h1 class="mt-5 fw-bolder text-success "> Student's Database </h1>
      <div class="table-responsive my-5">
@@ -8,19 +8,18 @@
        <Table :fields='fields' :studentData ="studentData"></Table>
      </div>
   </div> -->
-
-<div class="row ">
-  <div class="col-12 col-md-8 _red">.col-12 .col-md-8</div>
-  <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
-</div>
-
-<div class="row">
-  <div class="col-6 col-md-4 _red">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4 _blue">.col-6 .col-md-4</div>
-</div>
-
-</main>
+<!-- </main> -->
+  <div class="container-fluid">
+       <div class="row ">
+           <div class="col-6 col-md-8 _red">.col-12 .col-md-8</div>
+           <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
+       </div>
+      <div class="row">
+           <div class="col-6 col-md-4 _red">.col-6 .col-md-4</div>
+           <div class="col-6 col-md-4 _green">.col-6 .col-md-4</div>
+           <div class="col-6 col-md-4 _blue">.col-6 .col-md-4</div>
+      </div>
+  </div>
 
 </template>
 
@@ -68,5 +67,10 @@ export default {
 ._blue  {
   background: blue;;
 }
+
+._black  {
+  background: black;
+}
+
 
 </style>>
