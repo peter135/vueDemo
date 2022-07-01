@@ -2,11 +2,13 @@
   "name": "vue-demo",
   "private": true,
   "version": "0.0.0",
+
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
     "dev": "webpack serve --progress --config ./webpack.config.js"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.7",
     "@asigloo/vue-dynamic-forms": "^3.18.1",
     "@vue/compiler-sfc": "^3.2.34",
     "ant-design-vue": "^3.2.7",
