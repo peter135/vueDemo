@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <input
       @change="toggleTheme"
       id="checkbox"
@@ -14,6 +14,10 @@
         :class="{ 'switch-toggle-checked': userTheme === 'dark-theme' }"
       ></div>
     </label>
+      <p>Wer sitzt dort so spät, bei Nacht und Wind?</p>
+      <p>Entwickler Clemens, mit einem Pint.</p>
+      <p>Man hört ihn seufzen, ziemlich hart -</p>
+      <p>Sonntag ist's, die Deadline naht</p>
   </div>
 </template>
 
@@ -108,4 +112,14 @@ export default {
 .switch-toggle-checked {
   transform: translateX(calc(var(--element-size) * 0.6)) !important;
 }
+
+
+.card {
+  padding: 2rem 4rem;
+  text-align: center;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--background-color-secondary);
+}
+
 </style>
