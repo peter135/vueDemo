@@ -24,6 +24,7 @@ export default {
 
 .container-center {
   background-color: var(--background-color-primary);
+  width:100%;
   height: 100vh;
   display: flex;
   align-items: center;
