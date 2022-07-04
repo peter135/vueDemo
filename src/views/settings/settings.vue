@@ -1,6 +1,7 @@
 <template>
   <div class="form">
-    <ti-form ref="form" :model="formData" :rules="rules">
+
+    <!-- <ti-form ref="form" :model="formData" :rules="rules">
       <ti-form-item label="名称" prop="name">
         <ti-input v-model="formData.name"></ti-input>
       </ti-form-item>
@@ -10,9 +11,12 @@
       <ti-form-item>
         <button class="button" @click="onSubmit">提交</button>
       </ti-form-item>
-    </ti-form>
+    </ti-form> -->
     
-    <button class="button marginTop" @click="reset('role')">reset</button>
+    <!-- <button class="button marginTop" @click="reset('role')">reset</button> -->
+
+    
+
 
   </div>
 </template>
