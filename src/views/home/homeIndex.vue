@@ -10,11 +10,15 @@
 <script>
 import ThemeButton from "@/components/ThemeButton.vue";
 import TailWind from "@/components/TailWind.vue";
+import { getCurrentInstance } from 'vue';
 
 export default {
   name:'HomeIndex',
   components:{ ThemeButton, TailWind },
   setup (){
+
+    const instance = getCurrentInstance();
+    instance.proxy.$Toast.info("不会有bug的好");
 
   }
 }
